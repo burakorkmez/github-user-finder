@@ -8,17 +8,12 @@ const Logic = () => {
   const [input, setInput] = useState("");
   const [searched, setSearched] = useState(false);
   const [result, setResult] = useState();
-  const config = {
-    headers: {
-      Authorization: process.env.REACT_APP_GITHUB_TOKEN
-    }
-  };
   function handleChange(e) {
     setInput(e.target.value);
   }
 
   const handleClick = async () => {
-    const response = await Axios.get(`https://api.github.com/users/${input}`, config);
+    const response = await Axios.get(`https://api.github.com/users/${input}`);
     console.log(response.data);
     setResult(response.data);
     setSearched(true);

@@ -4,14 +4,9 @@ import Repo from "./Repo";
 
 const Repos = ({ input, result }) => {
   const [repos, setRepos] = useState([]);
-  const config = {
-    headers: {
-      Authorization: "token b1170e45372c3d5342b831eb7d4c9b9c07ec509f"
-    }
-  };
   useEffect(() => {
     async function fetchRepos() {
-      const response = await Axios.get(`https://api.github.com/users/${input}/repos?per_page=5&sort=created:asc`, config);
+      const response = await Axios.get(`https://api.github.com/users/${input}/repos?per_page=5&sort=created:asc`);
       console.log(response.data);
       setRepos(response.data);
     }
